@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "API for the Deliver Twist application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Project-Group18/Backend.git"
+  },
+  "author": "Team 18",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Project-Group18/Backend/issues"
+  },
+  "homepage": "https://github.com/Project-Group18/Backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
