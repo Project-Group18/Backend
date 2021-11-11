@@ -3,7 +3,7 @@ const db = require('./database');
 
 const app = express()
 const port = process.env.PORT || 3000
-const mysql = require('mysql')
+
 
 /* //connection details delivertwist18
  const connection = mysql.createPool({
@@ -40,5 +40,3 @@ app.use('/customer', customerRouter); */
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
-
-module.exports = connection;
