@@ -11,6 +11,8 @@ const mysql = require('mysql')
   database:'heroku_f525f990b893a93'
 }) 
 
+
+
 app.get('/', (req, res) => {
   connection.query("SELECT * from customer", (err, result) => {
     if (err) {
