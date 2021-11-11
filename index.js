@@ -11,8 +11,6 @@ const mysql = require('mysql')
   database:'heroku_f525f990b893a93'
 }) 
 
-
-
 app.get('/', (req, res) => {
   connection.query("SELECT * from customer", (err, result) => {
     if (err) {
@@ -21,6 +19,15 @@ app.get('/', (req, res) => {
     res.send(result);
   });
 });
+
+app.get('/restaurant', (req, res) => {
+  connection.query("SELECT * from restaurant", (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send(result);
+  })
+})
 
 
 app.listen(port, () => {
