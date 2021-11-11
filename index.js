@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000
 const mysql = require('mysql')
 
 //connection details delivertwist18
- const connection = mysql.createConnection({
+ const connection = mysql.createPool({
   host:'eu-cdbr-west-01.cleardb.com',
   user:'b002b54b181543',
   password:'3da37abf',
