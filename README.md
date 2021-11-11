@@ -11,3 +11,6 @@ https://delivertwist18.herokuapp.com/
 
 # How to fix Heroku MySQL database connections
 https://www.bezkoder.com/deploy-node-js-app-heroku-cleardb-mysql/
+
+# Nodemon configuration
+Start the local server by typing "nodemon index.js"
