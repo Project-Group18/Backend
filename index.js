@@ -1,7 +1,7 @@
 const express = require('express')
 const db = require('./database');
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 //for testing purposes
 app.get('/', (req, res) => {
