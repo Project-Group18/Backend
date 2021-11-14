@@ -8,7 +8,6 @@ var cors = require('cors')
 app.use(cors());
 app.use(bodyParser.json());
 
-
 //for testing purposes
 app.get('/', (req, res) => {
     res.send("Welcome to the main page! Try writing /restaurant or /customer to see what the database has to offer.");
