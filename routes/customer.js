@@ -14,6 +14,19 @@ router.get('/:id?',
     });
 });
 
+router.post('/', 
+function(request, res) {
+  customer.add(request.body, function(err, data) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(request.body);
+    }
+  });
+});
+
+
+
 module.exports = router;
 
 
