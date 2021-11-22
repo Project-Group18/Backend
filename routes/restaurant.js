@@ -2,15 +2,39 @@ const express = require('express');
 const router = express.Router();
 const restaurant = require('../models/restaurant_model');
 
+
+  //get restaurant by id
 router.get('/:id?',
  function(req, res) {
-
-    restaurant.getAll(function(err, data) {
+  if (req.params.id) {
+    restaurant.getById(req.params.id, function(err, result) {
       if (err) {
-        console.log(err);
+        res.json(err);
+      } else {
+        res.json(result);
       }
-        res.json(data);
     });
+    // get all restaurants
+  } else {
+    restaurant.getAll(function(err, result) {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(result);
+      }
+    });
+  }
+});
+
+router.post('/', 
+function(req, res) {
+  restaurant.add(req.body, function(err, data) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(req.body);
+    }
+  });
 });
 
 

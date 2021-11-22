@@ -11,12 +11,13 @@ const BasicStrategy = require('passport-http').BasicStrategy;
 
 passport.use(new BasicStrategy(
   function(username, password, done) {
-    console.log('what the hell is this, username: '+username+" password "+password);
+    console.log('username: '+username+" password "+password);
 
     //search for the matching username
+   
+    done(null, username);
 
-
-    done(null,username);
+   
   }
 ));
 
@@ -31,10 +32,12 @@ app.get('/', (req, res) => {
 var restaurantRouter = require('./routes/restaurant');
 var customerRouter = require('./routes/customer');
 var loginRouter = require('./routes/login');
+var managerRouter = require('./routes/manager');
 
 app.use('/restaurant', restaurantRouter); 
 app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); 
 app.use('/login', loginRouter);
+app.use('/manager', managerRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -2,18 +2,29 @@ const express = require('express');
 const router = express.Router();
 const customer = require('../models/customer_model');
 
-
+  //get customer by id
 router.get('/:id?',
  function(req, res) {
-
-    customer.getAll(function(err, data) {
+  if (req.params.id) {
+    customer.getById(req.params.id, function(err, result) {
       if (err) {
-        console.log(err);
+        res.json(err);
+      } else {
+        res.json(result);
       }
-        res.json(data);
-      
     });
+    // get all customers
+  } else {
+    customer.getAll(function(err, result) {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(result);
+      }
+    });
+  }
 });
+
 
 router.post('/', 
 function(req, res) {
@@ -40,12 +51,17 @@ function(req, res) {
 
 
 router.put('/:id', 
-function(request, response) {
-  customer.update(request.params.id, request.body, function(err, result) {
+function(req, res) {
+  customer.update(req.params.id, req.body, function(err, result) {
     if (err) {
-      response.json(err);
+      res.json(err);
     } else {
-      response.json(result);
+      console.log(result);
+      if (result.affectedRows==1) {
+      res.json("Customer table updated");
+      } else {
+        res.json("Customer could not be found");
+      }
     }
   });
 });

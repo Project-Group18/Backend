@@ -8,6 +8,9 @@ const customer = {
   getAll: function(callback) {
     return connection.query('select * from customer', callback);
   },
+  getById: function(id, callback) {
+    return connection.query('select * from customer where customer_id=?', [id], callback);
+  },
   add: function(customer, callback) {
     //firstly salting
     bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -28,8 +31,8 @@ const customer = {
   },
   update: function(id, customer, callback) {
     return connection.query(
-      'update customer set customer_id=?, customer_email=?, home_address=?, credit_card=?, customer_password=?',
-      [customer.customer_id, customer.customer_email, customer.home_address, customer.credit_card, customer.customer_password, id],
+      'update customer set customer_email=?, home_address=?, credit_card=?, customer_password=? WHERE customer_id=?',
+      [customer.customer_email, customer.home_address, customer.credit_card, customer.customer_password, id],
       callback
     );
   }
