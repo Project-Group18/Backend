@@ -1,21 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const customer = require('../models/customer_model');
+const order = require('../models/order_model');
 
-  //get customer by id
+
+  //get order by id
 router.get('/:id?',
  function(req, res) {
   if (req.params.id) {
-    customer.getById(req.params.id, function(err, result) {
+    order.getById(req.params.id, function(err, result) {
       if (err) {
         res.json(err);
       } else {
         res.json(result);
       }
     });
-    // get all customers
+    // get all orders
   } else {
-    customer.getAll(function(err, result) {
+    order.getAll(function(err, result) {
       if (err) {
         res.json(err);
       } else {
@@ -24,11 +25,10 @@ router.get('/:id?',
     });
   }
 });
-
-
+// create a new order
 router.post('/', 
 function(req, res) {
-  customer.add(req.body, function(err, data) {
+  order.add(req.body, function(err, data) {
     if (err) {
       res.json(err);
     } else {
@@ -37,35 +37,23 @@ function(req, res) {
   });
 });
 
-router.delete('/:id', 
-function(req, res) {
-  customer.delete(req.params.id, function(err, result) {
-    console.log(req.params.id);
-    if (err) {
-      res.json(err);
-    } else {
-      res.json('Row deleted');
-    }
-  });
-});
 
-//update customer info
+//update an order by id
 router.put('/:id', 
 function(req, res) {
-  customer.update(req.params.id, req.body, function(err, result) {
+    order.update(req.params.id, req.body, function(err, result) {
     if (err) {
       res.json(err);
     } else {
       console.log(result);
       if (result.affectedRows==1) {
-      res.json("Customer table updated");
+      res.json("Dish_order table updated");
       } else {
-        res.json("Customer could not be found");
+        res.json("Dish_order could not be found");
       }
     }
   });
 });
-
 
 module.exports = router;
 

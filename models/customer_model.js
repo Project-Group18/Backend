@@ -31,8 +31,8 @@ const customer = {
   },
   update: function(id, customer, callback) {
     return connection.query(
-      'update customer set customer_email=?, home_address=?, credit_card=?, customer_password=? WHERE customer_id=?',
-      [customer.customer_email, customer.home_address, customer.credit_card, customer.customer_password, id],
+      'update customer set customer_name=?, customer_email=?, home_address=?, credit_card=?, customer_password=? WHERE customer_id=?',
+      [customer.customer_name, customer.customer_email, customer.home_address, customer.credit_card, customer.customer_password, id],
       callback
     );
   }

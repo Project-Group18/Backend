@@ -16,8 +16,6 @@ passport.use(new BasicStrategy(
     //search for the matching username
    
     done(null, username);
-
-   
   }
 ));
 
@@ -33,11 +31,15 @@ var restaurantRouter = require('./routes/restaurant');
 var customerRouter = require('./routes/customer');
 var loginRouter = require('./routes/login');
 var managerRouter = require('./routes/manager');
+var dishRouter = require('./routes/dish');
+var orderRouter = require('./routes/order');
 
 app.use('/restaurant', restaurantRouter); 
 app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); 
 app.use('/login', loginRouter);
 app.use('/manager', managerRouter);
+app.use('/dish', dishRouter);
+app.use('/order', orderRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -26,6 +26,8 @@ router.get('/:id?',
   }
 });
 
+
+//add a new restaurant
 router.post('/', 
 function(req, res) {
   restaurant.add(req.body, function(err, data) {
@@ -37,6 +39,23 @@ function(req, res) {
   });
 });
 
+
+//update restaurant info
+router.put('/:id', 
+function(req, res) {
+  restaurant.update(req.params.id, req.body, function(err, result) {
+    if (err) {
+      res.json(err);
+    } else {
+      console.log(result);
+      if (result.affectedRows==1) {
+      res.json("restaurant table updated");
+      } else {
+        res.json("restaurant could not be found");
+      }
+    }
+  });
+});
 
 module.exports = router;
 
