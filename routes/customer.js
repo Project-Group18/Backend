@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const customer = require('../models/customer_model');
 
+
 router.get('/:id?',
  function(req, res) {
 

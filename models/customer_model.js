@@ -9,13 +9,13 @@ const customer = {
     return connection.query('select * from customer', callback);
   },
   add: function(customer, callback) {
-    //suolataan ensin
+    //firstly salting
     bcrypt.genSalt(saltRounds, function(err, salt) {
       //mixing into the hash
       bcrypt.hash(customer.customer_password, salt, function(err, hash) {
       // print to the console
       console.log(hash);
-      //sent to the database
+      //send to the database
     return connection.query(
       'insert into customer (customer_name, customer_email, home_address, credit_card, customer_password) values (?,?,?,?,?)', 
       [customer.customer_name, customer.customer_email, customer.home_address, customer.credit_card, hash], callback

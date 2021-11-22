@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const login = require('../models/login_model');
 
 router.post('/',
@@ -31,19 +31,14 @@ router.post('/',
                         res.send(false);
                     }
                     res.end();
-                }
-                );
-            }
-            else {
+                });
+            }else {
                 console.log("User doesn't exist")
                 /* res.send("User doesn't exist"); */
                 res.send(false);
             }
-        }
-        }
-    );
-    } 
-    else{
+        }} );
+    } else  {
         console.log("Username or password missing");
         /* res.send("Username or password missing"); */
         res.send(false);
