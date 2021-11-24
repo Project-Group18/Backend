@@ -29,12 +29,38 @@ const customer = {
   delete: function(id, callback) {
     return connection.query('delete from customer where customer_id=?', [id], callback);
   },
-  update: function(id, customer, callback) {
+  updateName: function(id, customer, callback) {
     return connection.query(
-      'update customer set customer_name=?, customer_email=?, home_address=?, credit_card=?, customer_password=? WHERE customer_id=?',
-      [customer.customer_name, customer.customer_email, customer.home_address, customer.credit_card, customer.customer_password, id],
+      'update customer set customer_name=? WHERE customer_id=?',
+      [customer.customer_name, id],
       callback
     );
+  },
+  updateAddress: function(id, customer, callback) {
+    return connection.query(
+      'update customer set home_address=? WHERE customer_id=?',
+      [customer.home_address, id],
+      callback
+    );
+  },
+  updateCC: function(id, customer, callback) {
+    return connection.query(
+      'update customer set credit_card=? WHERE customer_id=?',
+      [customer.credit_card, id],
+      callback
+    );
+  },
+  updatePassword: function(id, customer, callback) {
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+      bcrypt.hash(customer.customer_password, salt, function(err, hash) {
+        console.log(hash);
+        return connection.query(
+          'update customer set customer_password=? WHERE customer_id=?',
+          [hash, id],
+          callback
+        );
+      });
+    });
   }
 };
 module.exports = customer;
