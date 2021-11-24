@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const customer = require('../models/customer_model');
 
-  //get customer by id
+//get customer by id
 router.get('/:id?',
  function(req, res) {
   if (req.params.id) {
@@ -13,8 +13,7 @@ router.get('/:id?',
         res.json(result);
       }
     });
-    // get all customers
-  } else {
+  } else {  // get all customers
     customer.getAll(function(err, result) {
       if (err) {
         res.json(err);
@@ -48,7 +47,7 @@ function(req, res) {
     }
   });
 });
-
+//  TO BE SOLVED LATER!!!
 //update customer info
 router.put('/:id', 
   function(req, res) {
