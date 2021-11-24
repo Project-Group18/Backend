@@ -33,6 +33,7 @@ var loginRouter = require('./routes/login');
 var managerRouter = require('./routes/manager');
 var dishRouter = require('./routes/dish');
 var orderRouter = require('./routes/order');
+var categoryRouter = require('./routes/category');
 
 app.use('/restaurant', restaurantRouter); 
 app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); 
@@ -40,6 +41,7 @@ app.use('/login', loginRouter);
 app.use('/manager', managerRouter);
 app.use('/dish', dishRouter);
 app.use('/order', orderRouter);
+app.use('/category', categoryRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
