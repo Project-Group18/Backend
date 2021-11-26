@@ -35,8 +35,10 @@ var dishRouter = require('./routes/dish');
 var orderRouter = require('./routes/order');
 var categoryRouter = require('./routes/category');
 
+/* , passport.authenticate('basic', {session:false}) */
+
 app.use('/restaurant', restaurantRouter); 
-app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); 
+app.use('/customer', customerRouter); 
 app.use('/login', loginRouter);
 app.use('/manager', managerRouter);
 app.use('/dish', dishRouter);
