@@ -3,11 +3,13 @@ const router = express.Router();
 const dish = require('../models/dish_model');
 
 
-  //get dish by id
+  //
+  //get dish by restaurant id
 router.get('/:id?',
  function(req, res) {
   if (req.params.id) {
-    dish.getById(req.params.id, function(err, result) {
+    dish.getByRestId(req.params.id, function(err, result) {
+      //changed "getById" to "getByRestId"
       if (err) {
         res.json(err);
       } else {
@@ -36,6 +38,23 @@ function(req, res) {
     }
   });
 });
+
+
+/* router.get('/:id?',
+ function(req, res) {
+   if (req.params.id) {
+     dish.getByRestId(req.params.id, function(err, result) {
+       if(err) { 
+         res.json(err);
+        } else {
+          res.json(result);
+        }
+     })
+   }
+ }
+) */
+
+
 
 
 module.exports = router;
