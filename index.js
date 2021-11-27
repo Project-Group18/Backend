@@ -35,6 +35,8 @@ var dishRouter = require('./routes/dish');
 var orderRouter = require('./routes/order');
 var categoryRouter = require('./routes/category');
 
+var storefront = require('./routes/public')
+
 app.use('/restaurant', restaurantRouter); 
 app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); 
 app.use('/login', loginRouter);
@@ -42,6 +44,19 @@ app.use('/manager', managerRouter);
 app.use('/dish', dishRouter);
 app.use('/order', orderRouter);
 app.use('/category', categoryRouter);
+
+//  Public data, no jwt required
+/*  For browsing available restaurants and their menus.  */
+app.use('/frontpage', storefront);
+
+//  Login probably here, separate routes for both manager and customer?
+/*  Cant probably use JWT authentication before login...  */ 
+
+//  Functions needed by restaurant manager. JWT for manager required!
+//app.use('/manager', manager);
+
+//  Functions required for customer. JWT for customer required!
+//app.use('/customer', customer);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
