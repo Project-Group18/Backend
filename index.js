@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
     res.send("Welcome to the backend frontpage! Try writing /restaurant or /customer to see what the database has to offer.");
 });
 
+//  Left here as placeholders for now...
 var restaurantRouter = require('./routes/restaurant');
 var customerRouter = require('./routes/customer');
 var loginRouter = require('./routes/login');
@@ -35,8 +36,10 @@ var dishRouter = require('./routes/dish');
 var orderRouter = require('./routes/order');
 var categoryRouter = require('./routes/category');
 
+//  Main routers here
 var storefront = require('./routes/public')
 
+//  Again, placeholders...
 app.use('/restaurant', restaurantRouter); 
 app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); 
 app.use('/login', loginRouter);
