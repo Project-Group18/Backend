@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dish = require('../models/dish_model');
 
-
-  //
+  
   //get dish by restaurant id
 router.get('/:id?',
  function(req, res) {
