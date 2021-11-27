@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 });
 
 //  Left here as placeholders for now...
+/* 
 var restaurantRouter = require('./routes/restaurant');
 var customerRouter = require('./routes/customer');
 var loginRouter = require('./routes/login');
@@ -35,11 +36,13 @@ var managerRouter = require('./routes/manager');
 var dishRouter = require('./routes/dish');
 var orderRouter = require('./routes/order');
 var categoryRouter = require('./routes/category');
+*/
 
 //  Main routers here
 var storefront = require('./routes/public')
 
 //  Again, placeholders...
+/* 
 app.use('/restaurant', restaurantRouter); 
 app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); 
 app.use('/login', loginRouter);
@@ -47,6 +50,7 @@ app.use('/manager', managerRouter);
 app.use('/dish', dishRouter);
 app.use('/order', orderRouter);
 app.use('/category', categoryRouter);
+*/
 
 //  Public data, no jwt required
 /*  For browsing available restaurants and their menus.  */
