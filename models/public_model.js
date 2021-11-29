@@ -8,7 +8,7 @@ const public = {
     },
     getAll: function(callback) {
         return db.query('SELECT * FROM restaurant',
-        [type], callback
+         callback
         );
     },
     getByType: function(type, callback) {
@@ -27,7 +27,7 @@ const public = {
         );
     },
     getCategoryMenu: function(restId, catId, callback) {
-        return db.query('SELECT * FROM dish WHERE restaurant_id? AND category_id=?',
+        return db.query('SELECT * FROM dish WHERE restaurant_id=? AND category_id=?',
         [restId, catId], callback
         );
     }

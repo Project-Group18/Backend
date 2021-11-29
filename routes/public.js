@@ -68,7 +68,7 @@ router.get('/restaurant/:restaurantId?/menu',
 );
 
 //  Get all dishes from restaurant's chosen category
-router.get('restaurant/:restaurantId?/:categoryId?',
+router.get('/restaurant/:restaurantId?/category/:categoryId?',
 function(req, res) {
     public.getCategoryMenu(req.params.restaurantId, req.params.categoryId, function(err, result) {
         if(err) {

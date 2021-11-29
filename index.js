@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 //for testing purposes
 app.get('/', (req, res) => {
-    res.send("Welcome to the backend frontpage! Try writing /restaurant or /customer to see what the database has to offer.");
+    res.send("Welcome to the backend frontpage! Try writing /restaurant or /customer to see what the database has to offer. ");
 });
 
 //  Left here as placeholders for now...
@@ -39,7 +39,7 @@ var categoryRouter = require('./routes/category');
 */
 
 //  Main routers here
-var storefront = require('./routes/public')
+var publicRouter = require('./routes/public')
 
 //  Again, placeholders...
 /* 
@@ -54,7 +54,7 @@ app.use('/category', categoryRouter);
 
 //  Public data, no jwt required
 /*  For browsing available restaurants and their menus.  */
-app.use('/frontpage', storefront);
+app.use('/public', publicRouter);
 
 //  Login probably here, separate routes for both manager and customer?
 /*  Cant probably use JWT authentication before login...  */ 
