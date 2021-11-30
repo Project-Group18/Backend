@@ -13,6 +13,9 @@ const public = {
          callback
         );
     },
+    getRestaurantById: function(id, callback) {
+        return db.query('select * from restaurant where restaurant_id=?', [id], callback);
+      },
     //get all restaurants by type
     getByType: function(type, callback) {
         return db.query('SELECT * FROM restaurant WHERE restaurant_type=?',

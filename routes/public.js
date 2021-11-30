@@ -28,6 +28,18 @@ router.get('/restaurants',
   }
 );
 
+//  Get a restaurant by id
+router.get('/restaurant/:restaurant_id?',
+    function(req, res) {
+        public.getRestaurantById(req.params.restaurant_id, function(err, result) {
+            if(err) {
+                res.json(err);
+            } else {
+                res.json(result);
+            }
+        });
+    }
+);
 
 //  Get all dishes
 router.get('/dishes',
