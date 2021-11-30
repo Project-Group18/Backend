@@ -4,7 +4,10 @@ const BasicStrategy = require('passport-http').BasicStrategy;
 const passport = require('passport');
 
 
-module.exports = passport.use(new BasicStrategy(
+module.exports = 
+
+
+    passport.use(new BasicStrategy(
 
     function(email, password, done) {
       console.log('username: '+email+" password "+password);

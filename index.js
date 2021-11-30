@@ -82,33 +82,33 @@ app.get('/', (req, res) => {
 });
 
 
-//for testing purposes
+//request returns the Json web token we need in order to use a request
+//the customer branch is now locked behind the jwt authentication
 
 app.post('/jwtLogin', passport.authenticate('basic', {session:false}), (req, res) => {
 
-  //generate jwt web token 
-  const payload = {
-    foo: {
-      bar:true
-    }
-  };
+    //the data the JWT generation post will take to the requests it authenticates
+    const payload = 
+    {
+      //this will be changed later to be something relevant
+        foo: 
+        {
+          bar:true
+        }
+    };
+    //the secret signing key should be normally open in the code because it can be stolen
+    const secretOrKey = "mysecretkey";
+    const options = 
+      {
+        expiresIn: '1d'
+      }
 
-  const secretOrKey = "mysecretkey";
-  const options = {
-    expiresIn: '1d'
-  }
+    const generatedJWT = jwt.sign(payload, secretOrKey, options)
 
-  const generatedJWT = jwt.sign(payload, secretOrKey, options)
-  //send jwt as response
-
-  res.json({jwt: generatedJWT})
+    //send jwt as response
+    res.json({jwt: generatedJWT})
 
 });
-
-
-
-
-
 
 //  Left here as placeholders for now...
 /* 
