@@ -1,18 +1,15 @@
-const connection = require('../database');
+const db = require('../database');
 
-const customer = {
+        
+    const customer = 
+    {
 
-  getAll: function(callback) {
-    return connection.query('select * from customer', callback);
-  },
-  add: function(customer, callback) {
-    return connection.query(
-      'insert into customer (customer_name) values (?)', 
-      [customer.customer_name], callback
-      );
-  }
-};
+        // get all customers
+            getAllCustomers: function(callback) {
+            return db.query('select * from customer', callback);
+        }
+
+    }
+
+
 module.exports = customer;
-
-
-

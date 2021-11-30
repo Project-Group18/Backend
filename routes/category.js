@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const restaurant = require('../models/restaurant_model');
+const category = require('../models/category_model');
 
 
-  //get restaurant by id
+  //get category by id
 router.get('/:id?',
  function(req, res) {
   if (req.params.id) {
-    restaurant.getById(req.params.id, function(err, result) {
+    category.getById(req.params.id, function(err, result) {
       if (err) {
         res.json(err);
       } else {
         res.json(result);
       }
     });
-    // get all restaurants
+    // get all categories
   } else {
-    restaurant.getAll(function(err, result) {
+    category.getAll(function(err, result) {
       if (err) {
         res.json(err);
       } else {
@@ -25,12 +25,10 @@ router.get('/:id?',
     });
   }
 });
-
-
-//add a new restaurant
+// create a new category
 router.post('/', 
 function(req, res) {
-  restaurant.add(req.body, function(err, data) {
+  category.add(req.body, function(err, data) {
     if (err) {
       res.json(err);
     } else {
@@ -40,18 +38,18 @@ function(req, res) {
 });
 
 
-//update restaurant info
+//update a category by id
 router.put('/:id', 
 function(req, res) {
-  restaurant.update(req.params.id, req.body, function(err, result) {
+    category.update(req.params.id, req.body, function(err, result) {
     if (err) {
       res.json(err);
     } else {
       console.log(result);
       if (result.affectedRows==1) {
-      res.json("restaurant table updated");
+      res.json("Category table updated");
       } else {
-        res.json("restaurant could not be found");
+        res.json("Category could not be found");
       }
     }
   });

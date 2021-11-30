@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const restaurant = require('../models/restaurant_model');
+const order = require('../models/order_model');
 
 
-  //get restaurant by id
+  //get order by id
 router.get('/:id?',
  function(req, res) {
   if (req.params.id) {
-    restaurant.getById(req.params.id, function(err, result) {
+    order.getById(req.params.id, function(err, result) {
       if (err) {
         res.json(err);
       } else {
         res.json(result);
       }
     });
-    // get all restaurants
+    // get all orders
   } else {
-    restaurant.getAll(function(err, result) {
+    order.getAll(function(err, result) {
       if (err) {
         res.json(err);
       } else {
@@ -25,12 +25,10 @@ router.get('/:id?',
     });
   }
 });
-
-
-//add a new restaurant
+// create a new order
 router.post('/', 
 function(req, res) {
-  restaurant.add(req.body, function(err, data) {
+  order.add(req.body, function(err, data) {
     if (err) {
       res.json(err);
     } else {
@@ -40,18 +38,18 @@ function(req, res) {
 });
 
 
-//update restaurant info
+//update an order by id
 router.put('/:id', 
 function(req, res) {
-  restaurant.update(req.params.id, req.body, function(err, result) {
+    order.update(req.params.id, req.body, function(err, result) {
     if (err) {
       res.json(err);
     } else {
       console.log(result);
       if (result.affectedRows==1) {
-      res.json("restaurant table updated");
+      res.json("Dish_order table updated");
       } else {
-        res.json("restaurant could not be found");
+        res.json("Dish_order could not be found");
       }
     }
   });
