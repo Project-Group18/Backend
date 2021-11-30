@@ -40,7 +40,7 @@ var categoryRouter = require('./routes/category');
 
 //  Main routers here
 var publicRouter = require('./routes/public')
-
+var customerRouter = require('./routes/customer')
 //  Again, placeholders...
 /* 
 app.use('/restaurant', restaurantRouter); 
@@ -55,6 +55,7 @@ app.use('/category', categoryRouter);
 //  Public data, no jwt required
 /*  For browsing available restaurants and their menus.  */
 app.use('/public', publicRouter);
+app.use('/customer', customerRouter);
 
 //  Login probably here, separate routes for both manager and customer?
 /*  Cant probably use JWT authentication before login...  */ 

@@ -18,7 +18,35 @@ router.get('/restaurantType',
 //  Get all restaurants
 router.get('/restaurants',
   function(req, res) {
-    public.getAll(function(err, result) {
+    public.getAllRestaurants(function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
+
+
+//  Get all dishes
+router.get('/dishes',
+  function(req, res) {
+    public.getAllDishes(function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
+
+
+//  Get all customers (temporary)
+router.get('/customers',
+  function(req, res) {
+    public.getAllCustomers(function(err, result) {
         if(err) {
             res.json(err);
         } else {
