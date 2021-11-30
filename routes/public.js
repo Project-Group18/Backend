@@ -15,7 +15,7 @@ router.get('/restaurantType',
   }
 );
 
-//  Get all restaurants
+//  Get all restaurants//
 router.get('/restaurants',
   function(req, res) {
     public.getAllRestaurants(function(err, result) {
