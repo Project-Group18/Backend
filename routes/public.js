@@ -120,4 +120,19 @@ function(req, res) {
 }
 );
 
+
+//  Get a dish by restaurant id
+router.get('/dish/:restaurant_id?',
+    function(req, res) {
+        public.getDishByRestaurantId(req.params.restaurant_id, function(err, result) {
+            if(err) {
+                res.json(err);
+            } else {
+                res.json(result);
+            }
+        });
+    }
+);
+
+
 module.exports = router;

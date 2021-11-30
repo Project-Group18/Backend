@@ -48,7 +48,11 @@ const public = {
     //get all dishes (needed for unlogged in browsing)
         getAllDishes: function(callback) {
         return db.query('select * from dish', callback);
-      }
+      },
+    //get dish by rest id
+    getDishByRestaurantId: function(id, callback) {
+    return db.query('select * from dish where restaurant_id=?', [id], callback);
+    },
 }
 
 module.exports = public;
