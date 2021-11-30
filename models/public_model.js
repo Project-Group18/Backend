@@ -45,7 +45,7 @@ const public = {
         return db.query('select * from customer', callback);
     },
 
-    //get all dishes (needed for unlogged in browsing)
+    //get all dishes (TEMPORARY, needed for unlogged in browsing)
         getAllDishes: function(callback) {
         return db.query('select * from dish', callback);
       },
