@@ -17,33 +17,4 @@ router.get('/customers',
 );
 
 
-//  Get all restaurants
-router.get('/restaurants',
-  function(req, res) {
-    customer.getAllRestaurants(function(err, result) {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
-  }
-);
-
-//  Get all dishes
-router.get('/dishes',
-  function(req, res) {
-    customer.getAllDishes(function(err, result) {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
-  }
-);
-
-
-
-
 module.exports = router;
