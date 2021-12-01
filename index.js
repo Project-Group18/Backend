@@ -20,6 +20,8 @@ const BasicStrategy = require('passport-http').BasicStrategy;
 passport.use(new BasicStrategy(
   function(email, password, done) {
     console.log('username: '+email+" password "+password);
+    //add erro handling here
+    
 
     if(email && password)
     {
@@ -36,8 +38,19 @@ passport.use(new BasicStrategy(
           }
           if(compareResult) {
             console.log("Successful login")
-            /*   res.send(true); */
-            done(null, email);
+
+           login.returnUser(email, function(err, result) {
+             console.log(result);
+              const user = {
+              id: result[0].customer_id,
+              name: result[0].customer_name,
+              email: result[0].customer_email
+              };
+              console.log("USER:")
+              console.log(user);
+              done(null, user);
+            })
+            
           }
           else {
             console.log("wrong password")
@@ -85,21 +98,25 @@ app.get('/', (req, res) => {
 //request returns the Json web token we need in order to use a request
 //the customer branch is now locked behind the jwt authentication
 
-app.post('/jwtLogin', passport.authenticate('basic', {session:false}), (req, res) => {
+app.post('/jwtLoginCustomer', passport.authenticate('basic', {session:false}), (req, res) => {
 
+  /* console.log(req); */
     //the data the JWT generation post will take to the requests it authenticates
     const payload = 
     {
       //this will be changed later to be something relevant
-        foo: 
+        user: 
         {
-          bar:true
+          id: req.user.id,
+          name: req.user.name,
+          email: req.user.email
         }
     };
     //the secret signing key should be normally open in the code because it can be stolen
     const secretOrKey = "mysecretkey";
     const options = 
       {
+        //token expiration date (now lasts 1 day)
         expiresIn: '1d'
       }
 
@@ -149,7 +166,7 @@ app.use('/login', loginRouter);
 
 
 //  For testing purposes
-/* app.use('/customer', passport.authenticate('basic', {session:false}), customerRouter); */
+
 app.use('/customer', passport.authenticate('jwt', {session:false}), customerRouter);
 app.use('/manager', managerRouter);
 

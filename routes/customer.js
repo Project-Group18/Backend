@@ -7,6 +7,9 @@ const customer = require('../models/customer_model');
 router.get('/customers',
   function(req, res) {
     customer.getAllCustomers(function(err, result) {
+      //customer id can be pulled from the server instead of pulling it from the database (purely for testing)
+      console.log("This is the customer id: " + req.user.user.id);
+      //
         if(err) {
             res.json(err);
         } else {

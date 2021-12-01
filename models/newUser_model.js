@@ -5,26 +5,26 @@ const saltRounds = 10;
 
 const newUser = {
     //  Customer
-    addCustomer: function(customer, callback) {
+    addCustomer: function(data, callback) {
         bcrypt.genSalt(saltRounds, function(err, salt) {
-            bcrypt.hash(customer.customer_password, salt, function(err, hash) {
-                console.log(hash);
+            bcrypt.hash(data.customer_password, salt, function(err, hash) {
+                //console.log(hash);
                 return connection.query(
                     'insert into customer (customer_name, customer_email, home_address, credit_card, customer_password) values (?,?,?,?,?)', 
-                    [customer.customer_name, customer.customer_email, customer.home_address, customer.credit_card, hash],
+                    [data.customer_name, data.customer_email, data.home_address, data.credit_card, hash],
                     callback
                 );
             });
         });
     },
     //  Manager
-    addManager: function(manager, callback) {
+    addManager: function(data, callback) {
         bcrypt.genSalt(saltRounds, function(err, salt) {
-            bcrypt.hash(manager.manager_password, salt, function(err, hash) {
-                console.log(hash);
+            bcrypt.hash(data.manager_password, salt, function(err, hash) {
+                //console.log(hash);
                 return connection.query(
                     'insert into manager (manager_email, manager_password, manager_name) values (?,?,?)', 
-                    [manager.manager_email, hash, manager.manager_name],
+                    [data.manager_email, hash, data.manager_name],
                     callback
                 );
             });
