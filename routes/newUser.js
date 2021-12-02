@@ -45,10 +45,10 @@ router.post('/manager',
 function(req, res) {
   var nameLength = false;
   var passwordLength = false;
-  if(req.body.customer_name != null && req.body.customer_name.length >= 2) {
+  if(req.body.manager_name != null && req.body.manager_name.length >= 2) {
     nameLength = true;
   }
-  if(req.body.customer_password != null && req.body.customer_password.length >= 8) {
+  if(req.body.manager_password != null && req.body.manager_password.length >= 8) {
     passwordLength = true;
   }
   if(nameLength && passwordLength) {
