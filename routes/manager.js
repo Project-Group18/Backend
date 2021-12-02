@@ -2,41 +2,25 @@ const express = require('express');
 const router = express.Router();
 const manager = require('../models/manager_model');
 
-//  Get manager by id
-router.get('/:id?',
- function(req, res) {
-    if (req.params.id) {
-      manager.getById(req.params.id, function(err, result) {
-        if (err) {
-          res.json(err);
+
+//  Get all managers
+router.get('/managers',
+  function(req, res) {
+    manager.getAllManagers(function(err, result) {
+      
+      //customer id can be pulled from the passport instead of pulling it from the database (see if this can be implemented)
+      console.log("This is the manager id: " + req.user.user.id);
+      //
+
+        if(err) {
+            res.json(err);
         } else {
-          res.json(result);
+            res.json(result);
         }
-      });
-    } else {  //Get all Managers
-      manager.getAll(function(err, data) {
-        if (err) {
-          console.log(err);
-          }
-          res.json(data);
-        }
-      );
-    }
+    });
   }
 );
 
-
-//  Add new manager
-router.post('/', 
-function(req, res) {
-  manager.add(req.body, function(err, data) {
-    if (err) {
-      res.json(err);
-    } else {
-      res.json(req.body);
-    }
-  });
-});
 
 
 //  TO BE SOLVED LATER!!!

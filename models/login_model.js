@@ -1,14 +1,25 @@
-const connection = require('../database');
+const db = require('../database');
 
 const login = {
 
-    checkPassword: function(id, callback) {
-    return connection.query('SELECT customer_password FROM customer WHERE customer_email=?',[id], callback);
-  },
-    returnUser: function(id, callback) {
-      return connection.query('SELECT * from customer where customer_email=?',[id], callback);
+    //customer side
+    checkCustomerPassword: function(id, callback) {
+      return db.query('SELECT customer_password FROM customer WHERE customer_email=?',[id], callback);
+    },
+    returnCustomer: function(id, callback) {
+      return db.query('SELECT * from customer where customer_email=?',[id], callback);
+    },
+    //manager side
+    checkManagerPassword: function(id, callback) {
+      return db.query('SELECT manager_password FROM manager WHERE manager_email=?',[id], callback);
+    },
+    returnManager: function(id, callback) {
+      return db.query('SELECT * from manager where manager_email=?',[id], callback);
     }
 };
+
+
+
 module.exports = login;
 
 
