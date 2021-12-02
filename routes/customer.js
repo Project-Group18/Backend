@@ -7,6 +7,10 @@ const customer = require('../models/customer_model');
 router.get('/customers',
   function(req, res) {
     customer.getAllCustomers(function(err, result) {
+
+      //customer id can be pulled from the passport instead of pulling it from the database (see if this can be implemented)
+      console.log("This is the customer id: " + req.user.user.id);
+      //
         if(err) {
             res.json(err);
         } else {
@@ -17,31 +21,6 @@ router.get('/customers',
 );
 
 
-//  Get all restaurants
-router.get('/restaurants',
-  function(req, res) {
-    customer.getAllRestaurants(function(err, result) {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
-  }
-);
-
-//  Get all dishes
-router.get('/dishes',
-  function(req, res) {
-    customer.getAllDishes(function(err, result) {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
-  }
-);
 
 
 

@@ -3,13 +3,16 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const login = require('../models/login_model');
 
+
+//this file is currently not in use
+
 router.post('/',
  function(req, res) {
 
     if(req.body.customer_email && req.body.customer_password){
         const customer_password = req.body.customer_password;
 
-    login.checkPassword(req.body.customer_email, function(err, result) {
+    login.checkCustomerPassword(req.body.customer_email, function(err, result) {
         if (err) {
             res.json(err);
         }
