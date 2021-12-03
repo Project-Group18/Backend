@@ -203,14 +203,14 @@ var categoryRouter = require('./routes/category');
 *//* var managerRouter = require('./routes/manager'); */
 
 //  Main routers here
-var publicRouter = require('./routes/public')
-var newUserRouter = require('./routes/newUser')
-var loginRouter = require('./routes/login')
+var publicRouter = require('./routes/public');
+var newUserRouter = require('./routes/newUser');
+var loginRouter = require('./routes/login');
+var managerRouter = require('./routes/manager');
 
 //  for testing purposes...
 
-var customerRouter = require('./routes/customer')
-var managerRouter = require('./routes/manager');
+var customerRouter = require('./routes/customer');
 
 //  Again, placeholders...
 /* 
@@ -228,11 +228,11 @@ app.use('/category', categoryRouter);
 app.use('/public', publicRouter);
 app.use('/new', newUserRouter);
 app.use('/login', loginRouter);
+app.use('/manager', passport.authenticate('jwt', {session:false}), managerRouter);
 
 //  For testing purposes
 
 app.use('/customer', passport.authenticate('jwt', {session:false}), customerRouter);
-app.use('/manager', passport.authenticate('jwt', {session:false}), managerRouter);
 
 //  Login probably here, separate routes for both manager and customer?
 /*  Cant probably use JWT authentication before login...  */ 

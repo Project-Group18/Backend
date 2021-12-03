@@ -2,30 +2,94 @@ const express = require('express');
 const router = express.Router();
 const manager = require('../models/manager_model');
 
-
-//  Get all managers
-router.get('/managers',
+//  Create new Restaurant
+router.post('/createRestaurant',
   function(req, res) {
-    manager.getAllManagers(function(err, result) {
-      
-      //customer id can be pulled from the passport instead of pulling it from the database (see if this can be implemented)
-      console.log("This is the manager id: " + req.user.user.id);
-      //
-
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
+    manager.createRestaurant(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
   }
+);
+//  Create new Product Category
+router.post('/createCategory',
+  function(req, res) {
+    manager.createCategory(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+//  Create New Product
+router.post('/createProduct',
+  function(req, res) {
+    manager.createDish(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+//  Get all orders by restaurant_id, or exact order by order_id
+router.get('/getOrders/:orderId?',
+  function(req, res) {
+    if(req.params.orderId) {
+      manager.getOrderById(req.body, req.params.orderId, function(err, result) {
+        if(err) {
+          res.json(err)
+        } else {
+          res.json(result)
+        }
+      })
+    } else {
+      manager.getAllOrders(req.body, function(err, result) {
+        if(err) {
+          res.json(err)
+        } else {
+          res.json(result)
+        }
+      })
+    }
+  }
+);
+//  Get Order Data
+router.get('/getOrders/:orderId?/data',
+  function(req, res) {
+    manager.getOrderData(req.params.orderId, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+//  Update order status
+router.put('/orderStatus',
+  function(req, res) {
+    manager.updateOrder(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }  
 );
 
 
 
 //  TO BE SOLVED LATER!!!
 //update manager info
-router.put('/:id', 
+/* router.put('/:id', 
   function(req, res) {
     var respText;
     if(req.body.manager_name != null && req.body.manager_name.length >= 2) {
@@ -60,7 +124,7 @@ router.put('/:id',
     console.log(respText);
     res.json(respText);
   }
-);      
+); */      
 
 
 module.exports = router;
