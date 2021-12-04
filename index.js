@@ -4,6 +4,8 @@ var bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3001
 var cors = require('cors')
+
+//  Required for Login? Move to Login?
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JwtStrategy = require('passport-jwt').Strategy,

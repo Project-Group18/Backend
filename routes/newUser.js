@@ -26,15 +26,15 @@ function(req, res) {
       }
     });
   } else {
-    var respText = "Following fields contain errors: ";
+    var respText = "Following errors occured: ";
     if(!nameLength) {
-      respText += "Name "
+      respText += "Name Invalid "
     }
     if(!passwordLength) {
-      respText += "Password "
+      respText += "Password Invalid "
     }
     if(!CCFormat) {
-      respText += "CreditCardNumber"
+      respText += "CreditCardNumber Invalid"
     }
     res.send(respText)
   }
@@ -60,12 +60,12 @@ function(req, res) {
       }
     });
   } else {
-  var respText = "Following fields contain errors: ";
+  var respText = "Following errors occured: ";
   if(!nameLength) {
-    respText += "Name "
+    respText += "Name Invalid "
   }
   if(!passwordLength) {
-    respText += "Password "
+    respText += "Password Invalid "
   }
   res.send(respText)
 }

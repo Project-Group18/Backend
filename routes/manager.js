@@ -27,7 +27,7 @@ router.post('/createCategory',
   }
 );
 //  Create New Product
-router.post('/createProduct',
+router.post('/createDish',
   function(req, res) {
     manager.createDish(req.body, function(err, result) {
       if(err) {
@@ -38,6 +38,9 @@ router.post('/createProduct',
     })
   }
 );
+
+//  VVV     NOT TESTED YET!!!     VVV
+
 //  Get all orders by restaurant_id, or exact order by order_id
 router.get('/getOrders/:orderId?',
   function(req, res) {

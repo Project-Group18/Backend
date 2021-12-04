@@ -2,21 +2,8 @@ const express = require('express');
 const router = express.Router();
 const public = require('../models/public_model');
 
-//  Get restaurant type list
-router.get('/restaurantType',
- function(req, res) {
-    public.getAllTypes(function(err, result) {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
-  }
-);
-
 //  Get all restaurants//
-router.get('/restaurants',
+router.get('/restaurant',
   function(req, res) {
     public.getAllRestaurants(function(err, result) {
         if(err) {
@@ -28,10 +15,23 @@ router.get('/restaurants',
   }
 );
 
-//  Get a restaurant by id
-router.get('/restaurant/:restaurant_id?',
+//  Get restaurant type list
+router.get('/restaurant/type',
+ function(req, res) {
+    public.getAllTypes(function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
+
+//  Get all restaurants by type
+router.get('/restaurant/type/:restaurant_type?',
     function(req, res) {
-        public.getRestaurantById(req.params.restaurant_id, function(err, result) {
+        public.getByType(req.params.restaurant_type, function(err, result) {
             if(err) {
                 res.json(err);
             } else {
@@ -41,37 +41,10 @@ router.get('/restaurant/:restaurant_id?',
     }
 );
 
-//  Get all dishes
-router.get('/dishes',
-  function(req, res) {
-    public.getAllDishes(function(err, result) {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
-  }
-);
-
-
-//  Get all customers (temporary)
-router.get('/customers',
-  function(req, res) {
-    public.getAllCustomers(function(err, result) {
-        if(err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        }
-    });
-  }
-);
-
-//  Get all restaurants with type
-router.get('/restaurantType/:restaurant_type?',
+//  Get a restaurant by id
+router.get('/restaurant/:restaurant_id?',
     function(req, res) {
-        public.getByType(req.params.restaurant_type, function(err, result) {
+        public.getRestaurantById(req.params.restaurant_id, function(err, result) {
             if(err) {
                 res.json(err);
             } else {
@@ -120,19 +93,31 @@ function(req, res) {
 }
 );
 
+//  VVV     TEMP TEST CODE!!!!     VVV
 
-//  Get a dish by restaurant id
-router.get('/dish/:restaurant_id?',
-    function(req, res) {
-        public.getDishByRestaurantId(req.params.restaurant_id, function(err, result) {
-            if(err) {
-                res.json(err);
-            } else {
-                res.json(result);
-            }
-        });
-    }
+//  Get all customers (temporary)
+router.get('/customers',
+  function(req, res) {
+    public.getAllCustomers(function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
 );
-
+//  Get all managers (temporary)
+router.get('/managers',
+  function(req, res) {
+    public.getAllManagers(function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
 
 module.exports = router;

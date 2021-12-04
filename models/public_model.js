@@ -1,27 +1,27 @@
 const db = require('../database');
 
 const public = {
-    //get all restaurant types
-    getAllTypes: function(callback) {
-        return db.query('SELECT DISTINCT restaurant_type FROM restaurant',
-        callback
-        );
-    },
     //get all restaurants
     getAllRestaurants: function(callback) {
         return db.query('SELECT * FROM restaurant',
          callback
         );
     },
-    getRestaurantById: function(id, callback) {
-        return db.query('select * from restaurant where restaurant_id=?', [id], callback);
-      },
+    //get all restaurant types
+    getAllTypes: function(callback) {
+        return db.query('SELECT DISTINCT restaurant_type FROM restaurant',
+        callback
+        );
+    },
     //get all restaurants by type
     getByType: function(type, callback) {
         return db.query('SELECT * FROM restaurant WHERE restaurant_type=?',
         [type], callback
         );
     },
+    getRestaurantById: function(id, callback) {
+        return db.query('select * from restaurant where restaurant_id=?', [id], callback);
+      },
     //get all food categories
     getCategories: function(id, callback) {
         return db.query('SELECT * FROM category WHERE restaurant_id=?',
@@ -40,18 +40,17 @@ const public = {
         [restId, catId], callback
         );
     },
+
+    //  VVV     TEMP TEST CODE!!!!     VVV
+
     // get all customers (TEMPORARY)
     getAllCustomers: function(callback) {
         return db.query('select * from customer', callback);
     },
 
-    //get all dishes (TEMPORARY, needed for unlogged in browsing)
-        getAllDishes: function(callback) {
-        return db.query('select * from dish', callback);
-      },
-    //get dish by rest id
-    getDishByRestaurantId: function(id, callback) {
-    return db.query('select * from dish where restaurant_id=?', [id], callback);
+    // get all managers (TEMPORARY)
+    getAllManagers: function(callback) {
+        return db.query('select * from manager', callback);
     },
 }
 
