@@ -67,7 +67,7 @@ router.get('/restaurant/:restaurantId?/category',
     }
 );
 
-//  Get all dishes from restaurant
+//  Get all dishes from restaurant with restaurant id
 router.get('/restaurant/:restaurantId?/menu',
     function(req, res) {
         public.getMenu(req.params.restaurantId, function(err, result) {
@@ -79,6 +79,20 @@ router.get('/restaurant/:restaurantId?/menu',
         });
     }
 );
+//  Get all dishes 
+router.get('/dishes',
+  function(req, res) {
+    public.getAllDishes(function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
+
+
 
 //  Get all dishes from restaurant's chosen category
 router.get('/restaurant/:restaurantId?/category/:categoryId?',

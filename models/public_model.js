@@ -34,6 +34,10 @@ const public = {
         [id], callback
         );
     },
+    //get all dishes 
+    getAllDishes: function(callback) {
+        return db.query('select * from dish', callback);
+      },
     //get all dishes by rest id and category id
     getCategoryMenu: function(restId, catId, callback) {
         return db.query('SELECT * FROM dish WHERE restaurant_id=? AND category_id=?',
