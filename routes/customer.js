@@ -76,6 +76,19 @@ router.put('/confirmDelivery',
 );
 
 
+//get customer by customer id
+router.get('/:id?',
+ function(req, res) {
+  if (req.params.id) {
+    customer.getCustomerById(req.params.id, function(err, result) {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(result);
+      }
+    });
+  } 
+  });
 
 
 

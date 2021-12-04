@@ -53,7 +53,10 @@ const db = require('../database');
                 ["Complete", data.order_id, data.customer_id],
                 callback
             )
-        }
+        },
+        getCustomerById: function(id, callback) {
+            return connection.query('select * from customer where customer_id=?', [id], callback);
+          }
     }
 
 
