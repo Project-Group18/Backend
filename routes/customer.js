@@ -89,8 +89,18 @@ router.get('/:id?',
     });
   } 
   });
-
-
+  // simpliefied version of previous order post request
+  // this will be used to test the shopping cart create order implementation
+  router.post('/createOrder', 
+  function(req, res) {
+    customer.addOrder(req.body, function(err, data) {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(req.body);
+      }
+    });
+  });
 
 
 module.exports = router;

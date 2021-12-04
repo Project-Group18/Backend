@@ -9,6 +9,14 @@ const db = require('../database');
                 [data.total_price, data.message, "Pending", data.customer_id, data.restaurant_id, "CURDATE"],
                 callback
             )
+        },  
+        //temporary shopping cart testing function
+        addOrder: function(data, callback) {
+            return db.query(
+                'INSERT INTO dish_order (total_price, message, order_status, customer_id, restaurant_id, order_arrival_time) VALUES (?,?,?,?,?,?)',
+                [data.total_price, data.message, "Pending", data.customer_id, data.restaurant_id, "CURDATE"],
+                callback
+            )
         },
         getNewOrderId: function(data, callback) {
             return db.query(
@@ -55,7 +63,7 @@ const db = require('../database');
             )
         },
         getCustomerById: function(id, callback) {
-            return connection.query('select * from customer where customer_id=?', [id], callback);
+            return db.query('select * from customer where customer_id=?', [id], callback);
           }
     }
 
