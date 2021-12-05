@@ -58,7 +58,7 @@ const db = require('../database');
         updateOrder: function(data, callback) {
             return db.query(
                 'UPDATE dish_order SET order_status=? WHERE (order_id=? AND customer_id=?)',
-                ["Complete", data.order_id, data.customer_id],
+                [data.order_status, data.order_id, data.customer_id],
                 callback
             )
         },
