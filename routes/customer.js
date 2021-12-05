@@ -32,7 +32,7 @@ router.post('/newOrder',
 router.get('/getOrders/:orderId?',
   function(req, res) {
     if(req.params.orderId) {
-      manager.getOrderById(req.body, req.params.orderId, function(err, result) {
+      customer.getOrderById(req.body, req.params.orderId, function(err, result) {
         if(err) {
           res.json(err)
         } else {
@@ -40,7 +40,7 @@ router.get('/getOrders/:orderId?',
         }
       })
     } else {
-      manager.getAllOrders(req.body, function(err, result) {
+      customer.getAllOrders(req.body, function(err, result) {
         if(err) {
           res.json(err)
         } else {
@@ -53,7 +53,7 @@ router.get('/getOrders/:orderId?',
 //  Get Order Data
 router.get('/getOrders/:orderId?/data',
   function(req, res) {
-    manager.getOrderData(req.params.orderId, function(err, result) {
+    customer.getOrderData(req.params.orderId, function(err, result) {
       if(err) {
         res.json(err)
       } else {
@@ -65,7 +65,7 @@ router.get('/getOrders/:orderId?/data',
 //  Update order status
 router.put('/confirmDelivery',
   function(req, res) {
-    manager.updateOrder(req.body, function(err, result) {
+    customer.updateOrder(req.body, function(err, result) {
       if(err) {
         res.json(err)
       } else {
