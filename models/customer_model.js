@@ -64,7 +64,14 @@ const db = require('../database');
         },
         getCustomerById: function(id, callback) {
             return db.query('select * from customer where customer_id=?', [id], callback);
-          }
+          },
+        getOrderByCustomerId: function(data, callback) {
+        return db.query(
+            'SELECT * FROM dish_order WHERE customer_id=?',
+            [data],
+            callback
+        )
+        }
     }
 
 

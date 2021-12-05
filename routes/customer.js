@@ -50,6 +50,25 @@ router.get('/getOrders/:orderId?',
     }
   }
 );
+///////
+// get all orders by customer id (this will be used to present the orders on the frontpage
+//until a better request is made for it)
+router.get('/getOrders/customer/:customer_id?',
+  function(req, res) {
+    customer.getOrderByCustomerId(req.params.customer_id, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+//get orders by customer id which have the orderstatus of receiving, delivering and all in between
+
+
+//get orders by customer id which have the orderstatus of delivered
+
 //  Get Order Data
 router.get('/getOrders/:orderId?/data',
   function(req, res) {
