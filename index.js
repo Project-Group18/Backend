@@ -107,7 +107,7 @@ passport.use(new BasicStrategy(
                         id: result[0].manager_id,
                         name: result[0].manager_name,
                         email: result[0].manager_email,
-                        restId: result[0].restaurant_id
+                        restid: result[0].restaurant_id
                       };
                         console.log("USER:")
                         console.log(user);
@@ -176,7 +176,8 @@ app.get('/', (req, res) => {
           {
             id: req.user.id,
             name: req.user.name,
-            email: req.user.email
+            email: req.user.email,
+            restid: req.user.restid
           }
       };
       //the secret signing key shouldn't be normally be open in the code because it can be stolen
