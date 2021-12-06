@@ -1,20 +1,21 @@
 const db = require('../database');
 
-        
+    var dateTime = new Date();
+    
     const customer = 
     {
         postNewOrder: function(data, callback) {
             return db.query(
                 'INSERT INTO dish_order (total_price, message, order_status, customer_id, restaurant_id, order_arrival_time) VALUES (?,?,?,?,?,?)',
-                [data.total_price, data.message, "Pending", data.customer_id, data.restaurant_id, "CURDATE"],
+                [data.total_price, data.message, "Received", data.customer_id, data.restaurant_id, dateTime],
                 callback
             )
         },  
-        //temporary shopping cart testing function
+        //this version is in use now currently
         addOrder: function(data, callback) {
             return db.query(
                 'INSERT INTO dish_order (total_price, message, order_status, customer_id, restaurant_id, order_arrival_time) VALUES (?,?,?,?,?,?)',
-                [data.total_price, data.message, "Pending", data.customer_id, data.restaurant_id, "CURDATE"],
+                [data.total_price, data.message, "Received", data.customer_id, data.restaurant_id, dateTime],
                 callback
             )
         },
