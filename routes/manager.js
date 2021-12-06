@@ -63,6 +63,22 @@ router.get('/getOrders/:orderId?',
     }
   }
 );
+//get all orders by restaurant id
+
+router.get('/getOrders/restaurant/:restid?',
+  function(req, res) {
+    manager.getOrderByRestid(req.params.restid, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+
+
+
 //  Get Order Data
 router.get('/getOrders/:orderId?/data',
   function(req, res) {

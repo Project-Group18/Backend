@@ -50,6 +50,14 @@ const manager = {
       [data.order_status, data.order_id, data.restaurant_id],
       callback
     )
+  },
+  ////
+  getOrderByRestid: function(restid, callback) {
+    return db.query(
+      'SELECT * from dish_order WHERE restaurant_id=?',
+      [restid],
+      callback
+    )
   }
   /* //  TO BE SOLVED LATER...
   updateName: function(id, manager, callback) {
