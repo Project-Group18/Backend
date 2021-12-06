@@ -107,6 +107,19 @@ function(req, res) {
 }
 );
 
+//  Get manager id with manager email (in use)
+router.post('/managerid/email',
+    function(req, res) {
+        public.getManagerIdWithEmail(req.body, function(err, result) {
+            if(err) {
+                res.json(err);
+            } else {
+                res.json(result);
+            }
+        });
+    }
+);
+
 //  VVV     TEMP TEST CODE!!!!     VVV
 
 //  Get all customers (temporary)
@@ -121,6 +134,8 @@ router.get('/customers',
     });
   }
 );
+
+
 //  Get all managers (temporary)
 router.get('/managers',
   function(req, res) {
@@ -133,5 +148,8 @@ router.get('/managers',
     });
   }
 );
+
+
+
 
 module.exports = router;

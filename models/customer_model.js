@@ -49,6 +49,13 @@ const db = require('../database');
                 callback
             )
         },
+        //currently in use
+        getOrderHistory: function(data, callback) {
+            return db.query('SELECT * FROM dish_order where order_status=? AND customer_id=?',
+             [data.order_status, data.customer_id], 
+             callback
+            );
+        },
         getOrderData: function(orderId, callback) {
             return db.query(
                 'SELECT dish.dish_name AS Product, dish.price AS Price, dish_data.dish_amount AS Quantity FROM dish INNER JOIN dish_data ON dish.dish_id=dish_data.dish_id WHERE dish_data.order_id=?',

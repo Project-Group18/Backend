@@ -122,4 +122,17 @@ router.get('/:id?',
   });
 
 
+  //get all orders which status is delivered by customer id
+router.post('/orderHistory',
+  function(req, res) {
+    customer.getOrderHistory(req.body, function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
+
 module.exports = router;

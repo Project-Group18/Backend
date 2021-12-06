@@ -56,6 +56,11 @@ const public = {
     getAllManagers: function(callback) {
         return db.query('select * from manager', callback);
     },
+    getManagerIdWithEmail: function(id, callback) {
+        return db.query('SELECT manager_id FROM manager WHERE manager_email=?',
+        [id.manager_email], callback
+        );
+    }
 }
 
 module.exports = public;
