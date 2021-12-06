@@ -106,7 +106,8 @@ passport.use(new BasicStrategy(
                       const user = {
                         id: result[0].manager_id,
                         name: result[0].manager_name,
-                        email: result[0].manager_email
+                        email: result[0].manager_email,
+                        restId: result[0].restaurant_id
                       };
                         console.log("USER:")
                         console.log(user);

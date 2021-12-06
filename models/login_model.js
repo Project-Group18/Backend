@@ -14,7 +14,7 @@ const login = {
       return db.query('SELECT manager_password FROM manager WHERE manager_email=?',[id], callback);
     },
     returnManager: function(id, callback) {
-      return db.query('SELECT * from manager where manager_email=?',[id], callback);
+      return db.query('SELECT manager.manager_id, manager_name, manager_email, restaurant_id from manager JOIN restaurant on manager.manager_id = restaurant.manager_id where manager_email=?;',[id], callback);
     }
 };
 
