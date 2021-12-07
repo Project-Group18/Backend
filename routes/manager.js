@@ -157,6 +157,19 @@ router.get('/getDishes/:restid?',
   }
 );
 
+//  Update restaurant image with restaurant id
+router.put('/updatePicture/restaurant',
+  function(req, res) {
+    manager.updateRestImage(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }  
+);
+
 //  TO BE SOLVED LATER!!!
 //update manager info
 /* router.put('/:id', 

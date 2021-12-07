@@ -86,6 +86,13 @@ const manager = {
       callback
     )
   },
+  updateRestImage: function(data, callback) {
+    return db.query(
+      'UPDATE restaurant SET restaurant_picture=? WHERE restaurant_id=?',
+      [data.restaurant_picture, data.restaurant_id],
+      callback
+    )
+  },
 
   /* //  TO BE SOLVED LATER...
   updateName: function(id, manager, callback) {
