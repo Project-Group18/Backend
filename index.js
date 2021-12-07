@@ -4,6 +4,8 @@ var bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3001
 var cors = require('cors')
+
+//  Required for Login? Move to Login?
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JwtStrategy = require('passport-jwt').Strategy,
@@ -104,7 +106,8 @@ passport.use(new BasicStrategy(
                       const user = {
                         id: result[0].manager_id,
                         name: result[0].manager_name,
-                        email: result[0].manager_email
+                        email: result[0].manager_email,
+                        restid: result[0].restaurant_id
                       };
                         console.log("USER:")
                         console.log(user);
@@ -173,7 +176,8 @@ app.get('/', (req, res) => {
           {
             id: req.user.id,
             name: req.user.name,
-            email: req.user.email
+            email: req.user.email,
+            restid: req.user.restid
           }
       };
       //the secret signing key shouldn't be normally be open in the code because it can be stolen
@@ -203,14 +207,14 @@ var categoryRouter = require('./routes/category');
 *//* var managerRouter = require('./routes/manager'); */
 
 //  Main routers here
-var publicRouter = require('./routes/public')
-var newUserRouter = require('./routes/newUser')
-var loginRouter = require('./routes/login')
+var publicRouter = require('./routes/public');
+var newUserRouter = require('./routes/newUser');
+var loginRouter = require('./routes/login');
+var managerRouter = require('./routes/manager');
 
 //  for testing purposes...
 
-var customerRouter = require('./routes/customer')
-var managerRouter = require('./routes/manager');
+var customerRouter = require('./routes/customer');
 
 //  Again, placeholders...
 /* 
@@ -228,11 +232,11 @@ app.use('/category', categoryRouter);
 app.use('/public', publicRouter);
 app.use('/new', newUserRouter);
 app.use('/login', loginRouter);
+app.use('/manager', passport.authenticate('jwt', {session:false}), managerRouter);
 
 //  For testing purposes
 
 app.use('/customer', passport.authenticate('jwt', {session:false}), customerRouter);
-app.use('/manager', passport.authenticate('jwt', {session:false}), managerRouter);
 
 //  Login probably here, separate routes for both manager and customer?
 /*  Cant probably use JWT authentication before login...  */ 

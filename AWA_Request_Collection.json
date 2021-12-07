@@ -1,0 +1,788 @@
+{
+	"info": {
+		"_postman_id": "6a335e96-273a-45e5-aabb-9cee534577a6",
+		"name": "AWA_2021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "List All Restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "List Restaurant Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/public/restaurant/type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"public",
+								"restaurant",
+								"type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List \"Type\"-restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/public/restaurant/type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"public",
+								"restaurant",
+								"type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restaurant \"Id\"",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/public/restaurant/85",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"public",
+								"restaurant",
+								"85"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Restaurant \"id\" Dishes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/public/restaurant/85/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"public",
+								"restaurant",
+								"85",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Restaurant \"id\" Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/public/restaurant/85/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"public",
+								"restaurant",
+								"85",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Restaurant \"id\" Category \"id\" dishes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/public/restaurant/85/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"public",
+								"restaurant",
+								"85",
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New User",
+			"item": [
+				{
+					"name": "New Customer",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "chrisEmail",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_name\": \"Jonathan\",\r\n    \"customer_email\": \"Jonathan@email.com\",\r\n    \"home_address\": \"Demo street 2\",\r\n    \"credit_card\": \"4444444444\",\r\n    \"customer_password\": \"password13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/new/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"new",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Manager",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"manager_email\": \"manager.ville@email.end\",\r\n    \"manager_password\": \"ville's_password\",\r\n    \"manager_name\": \"Ville\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/new/manager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"new",
+								"manager"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Test Login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "testpassword",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "TestManager@test.test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "Create Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_name\": \"Test Restaurant\",\r\n    \"restaurant_type\": \"Test Type\",\r\n    \"open_hours\": \"07-22\",\r\n    \"price_level\": \"€€€\",\r\n    \"location\": \"Test Location\",\r\n    \"restaurant_picture\": \"NULL\",\r\n    \"manager_id\": \"225\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/manager/createRestaurant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"manager",
+								"createRestaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_name\": \"Test Restaurant\",\r\n    \"restaurant_type\": \"Test Type\",\r\n    \"open_hours\": \"07-22\",\r\n    \"price_level\": \"€€€\",\r\n    \"location\": \"Test Location\",\r\n    \"restaurant_picture\": \"NULL\",\r\n    \"manager_id\": \"225\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/manager/createRestaurant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"manager",
+								"createRestaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Dish",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dish_name\": \"TestDish 1\",\r\n    \"price\": \"10\",\r\n    \"category_id\": \"225\",\r\n    \"dish_picture\": \"\",\r\n    \"dish_info\": \"TestDish 1 INFO\",\r\n    \"restaurant_id\": \"125\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/manager/createDish",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"manager",
+								"createDish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! List All Orders To restaurant \"Id\"",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_id\": \"125\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/manager/getOrders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"manager",
+								"getOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! Order \"id\" To restaurant \"Id\"",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_id\": \"125\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/manager/getOrders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"manager",
+								"getOrders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! Order \"id\" To restaurant \"Id\" Data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_id\": \"125\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/manager/getOrders/1/data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"manager",
+								"getOrders",
+								"1",
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! Update Order \"id\" To restaurant \"Id\" Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_id\": \"125\",\r\n    \"order_id\": \"1\",\r\n    \"order_status\": \"Received\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/manager/orderStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"manager",
+								"orderStatus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "NT! New Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"total_price\": \"20\",\r\n    \"message\": \"Testing if placing orders works\",\r\n    \"customer_id\": \"\",\r\n    \"restaurant_id\": \"\",\r\n    \"items\": [\r\n        {\r\n            \"dish_id\": \"\",\r\n            \"dish_amount\": \"\"\r\n        },\r\n        {\r\n            \"dish_id\": \"\",\r\n            \"dish_amount\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/customer/newOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"customer",
+								"newOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! List All Orders By Customer \"id\"",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/customer/getOrders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"customer",
+								"getOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! Order \"Id\" By Customer \"id\"",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/customer/getOrders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"customer",
+								"getOrders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! Order \"id\" by Customer \"Id\" Data",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer_id\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/customer/getOrders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"customer",
+								"getOrders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NT! confirm Order \"id\" delivery",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyMjUsIm5hbWUiOiJUZXN0IFRlc3RlciIsImVtYWlsIjoiVGVzdE1hbmFnZXJAdGVzdC50ZXN0In0sImlhdCI6MTYzODYyMDQ5MCwiZXhwIjoxNjM4NzA2ODkwfQ.QYMnVC-z6enpwI079fQIVcO8vk6JnqbQP0btILElW_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurant_id\": \"125\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/customer/getOrders/1/data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"customer",
+								"getOrders",
+								"1",
+								"data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DB Tests",
+			"item": [
+				{
+					"name": "Customer Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Manager Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
