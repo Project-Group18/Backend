@@ -44,6 +44,13 @@ const public = {
         [restId, catId], callback
         );
     },
+    createRestaurant: function(data, callback) {
+        return db.query(
+          'INSERT INTO restaurant (restaurant_name, restaurant_type, open_hours, price_level, location, restaurant_picture, manager_id) VALUES (?,?,?,?,?,?,?)',
+          [data.restaurant_name, data.restaurant_type, data.open_hours, data.price_level, data.location, data.restaurant_picture, data.manager_id],
+          callback
+        );
+      },
 
     //  VVV     TEMP TEST CODE!!!!     VVV
 

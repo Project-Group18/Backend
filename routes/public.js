@@ -150,6 +150,17 @@ router.get('/managers',
 );
 
 
-
+//  Create new Restaurant
+router.post('/createRestaurant',
+  function(req, res) {
+   public.createRestaurant(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
 
 module.exports = router;
