@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const passport_manager = require('./passport_manager');
-const passport_customer = require('./passport_customer');
+const passport_manager = require('../passport_manager');
+const passport_customer = require('../passport_customer');
 
-app.post('/customer', passport_customer.authenticate('basic', {session:false}), (req, res) => {
+router.post('/customer', passport_customer.authenticate('basic', {session:false}), (req, res) => {
     const payload = 
     {
         user: 
@@ -24,7 +24,7 @@ app.post('/customer', passport_customer.authenticate('basic', {session:false}), 
     res.json({jwt: generatedJWT})
 });
 
-app.post('/manager', passport_manager.authenticate('basic', {session:false}), (req, res) => {
+router.post('/manager', passport_manager.authenticate('basic', {session:false}), (req, res) => {
     const payload = 
     {
         user: 
