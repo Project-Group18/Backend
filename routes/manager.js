@@ -117,6 +117,20 @@ router.put('/orderStatus',
   }
 );
 
+//get restaurant with manager id
+
+router.get('/getRestaurant/:managerid?',
+  function(req, res) {
+    manager.getRestaurantWithID(req.params.managerid, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+
 
 //  TO BE SOLVED LATER!!!
 //update manager info

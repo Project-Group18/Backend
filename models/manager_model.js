@@ -65,6 +65,13 @@ const manager = {
       callback
     )
   },
+  getRestaurantWithID: function(managerid, callback) {
+    return db.query(
+      'SELECT * from restaurant WHERE manager_id=?',
+      [managerid],
+      callback
+    )
+  },
 
   /* //  TO BE SOLVED LATER...
   updateName: function(id, manager, callback) {
