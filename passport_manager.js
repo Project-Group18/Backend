@@ -24,7 +24,7 @@ passport_manager.use(new ManagerBasicStrategy(
                                 id: DBresult[0].manager_id,
                                 name: DBresult[0].manager_name,
                                 email: DBresult[0].manager_email,
-                                restid: result[0].restaurant_id
+                                restid: DBresult[0].restaurant_id
                             };
                             console.log("USER:")
                             console.log(user);
