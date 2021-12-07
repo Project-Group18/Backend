@@ -163,4 +163,18 @@ router.post('/createRestaurant',
   }
 );
 
+
+  //get manager id by manager email
+  router.post('/managerid/email',
+  function(req, res) {
+    manager.getManagerID(req.body, function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
+
 module.exports = router;

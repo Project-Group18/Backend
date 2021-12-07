@@ -64,7 +64,8 @@ const manager = {
       [restid],
       callback
     )
-  }
+  },
+
   /* //  TO BE SOLVED LATER...
   updateName: function(id, manager, callback) {
     return db.query(

@@ -51,7 +51,12 @@ const public = {
           callback
         );
       },
-
+      getManagerID: function(data, callback) {
+        return db.query('SELECT manager_id FROM manager where manager_email=?',
+          [data.manager_email], 
+          callback
+        );
+    },
     //  VVV     TEMP TEST CODE!!!!     VVV
 
     // get all customers (TEMPORARY)
