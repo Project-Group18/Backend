@@ -131,6 +131,31 @@ router.get('/getRestaurant/:managerid?',
   }
 );
 
+//get all categories with restaurant id
+router.get('/getCategories/:restid?',
+  function(req, res) {
+    manager.getCategoriesWithID(req.params.restid, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+
+//get all dishes with restaurant id
+router.get('/getDishes/:restid?',
+  function(req, res) {
+    manager.getDishesWithID(req.params.restid, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
 
 //  TO BE SOLVED LATER!!!
 //update manager info

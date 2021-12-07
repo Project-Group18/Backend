@@ -72,6 +72,20 @@ const manager = {
       callback
     )
   },
+  getCategoriesWithID: function(restid, callback) {
+    return db.query(
+      'SELECT * from category WHERE restaurant_id=?',
+      [restid],
+      callback
+    )
+  },
+  getDishesWithID: function(restid, callback) {
+    return db.query(
+      'SELECT * from dish WHERE restaurant_id=?',
+      [restid],
+      callback
+    )
+  },
 
   /* //  TO BE SOLVED LATER...
   updateName: function(id, manager, callback) {
