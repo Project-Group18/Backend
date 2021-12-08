@@ -14,8 +14,8 @@ const db = require('../database');
         //this version is in use now currently
         addOrder: function(data, callback) {
             return db.query(
-                'INSERT INTO dish_order (total_price, message, order_status, customer_id, restaurant_id, order_arrival_time) VALUES (?,?,?,?,?,?)',
-                [data.total_price, data.message, "Received", data.customer_id, data.restaurant_id, dateTime],
+                'INSERT INTO dish_order (total_price, message, order_status, customer_id, restaurant_id, order_arrival_time, delivery_location) VALUES (?,?,?,?,?,?,?)',
+                [data.total_price, data.message, "Received", data.customer_id, data.restaurant_id, dateTime, data.delivery_location],
                 callback
             )
         },
