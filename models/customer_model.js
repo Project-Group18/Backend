@@ -79,7 +79,14 @@ const db = require('../database');
             [data],
             callback
         )
-        }
+        },
+        getCCWithCustomerID: function(data, callback) {
+            return db.query(
+                'SELECT credit_card FROM customer WHERE customer_id=?',
+                [data],
+                callback
+            )
+        },
     }
 
 

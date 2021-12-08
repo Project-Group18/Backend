@@ -135,4 +135,18 @@ router.post('/orderHistory',
   }
 );
 
+//get customer CC with customer id
+router.get('/getCC/:customerID?',
+  function(req, res) {
+    customer.getCCWithCustomerID(req.params.customerID, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+
+
 module.exports = router;
