@@ -39,32 +39,7 @@ router.post('/createDish',
   }
 );
 
-//  VVV     NOT TESTED YET!!!     VVV
-
-//  Get all orders by restaurant_id, or exact order by order_id
-router.get('/getOrders/:orderId?',
-  function(req, res) {
-    if(req.params.orderId) {
-      manager.getOrderById(req.body, req.params.orderId, function(err, result) {
-        if(err) {
-          res.json(err)
-        } else {
-          res.json(result)
-        }
-      })
-    } else {
-      manager.getAllOrders(req.body, function(err, result) {
-        if(err) {
-          res.json(err)
-        } else {
-          res.json(result)
-        }
-      })
-    }
-  }
-);
 //get all orders by restaurant id
-
 router.get('/getOrders/restaurant/:restid?',
   function(req, res) {
     manager.getOrderByRestid(req.params.restid, function(err, result) {
@@ -77,32 +52,18 @@ router.get('/getOrders/restaurant/:restid?',
   }
 );
 
-
-
-//  Get Order Data
-router.get('/getOrders/:orderId?/data',
-  function(req, res) {
-    manager.getOrderData(req.params.orderId, function(err, result) {
-      if(err) {
-        res.json(err)
-      } else {
-        res.json(result)
-      }
-    })
-  }
-);
-//  Update order status
-router.put('/orderStatus',
-  function(req, res) {
-    manager.updateOrder(req.body, function(err, result) {
-      if(err) {
-        res.json(err)
-      } else {
-        res.json(result)
-      }
-    })
-  }  
-);
+  //  Update order status
+  router.put('/orderStatus',
+    function(req, res) {
+      manager.updateOrder(req.body, function(err, result) {
+        if(err) {
+          res.json(err)
+        } else {
+          res.json(result)
+        }
+      })
+    }  
+  );
 
   //get all orders which status is delivered by restaurant id
   router.post('/orderHistory',
@@ -118,7 +79,6 @@ router.put('/orderStatus',
 );
 
 //get restaurant with manager id
-
 router.get('/getRestaurant/:managerid?',
   function(req, res) {
     manager.getRestaurantWithID(req.params.managerid, function(err, result) {
@@ -182,6 +142,46 @@ router.put('/updatePicture/dish',
     })
   }  
 );
+
+
+// not in use currently
+
+//  Get all orders by restaurant_id, or exact order by order_id
+router.get('/getOrders/:orderId?',
+  function(req, res) {
+    if(req.params.orderId) {
+      manager.getOrderById(req.body, req.params.orderId, function(err, result) {
+        if(err) {
+          res.json(err)
+        } else {
+          res.json(result)
+        }
+      })
+    } else {
+      manager.getAllOrders(req.body, function(err, result) {
+        if(err) {
+          res.json(err)
+        } else {
+          res.json(result)
+        }
+      })
+    }
+  }
+);
+
+//  Get Order Data
+router.get('/getOrders/:orderId?/data',
+  function(req, res) {
+    manager.getOrderData(req.params.orderId, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+
 
 
 //  TO BE SOLVED LATER!!!

@@ -2,57 +2,8 @@ const express = require('express');
 const router = express.Router();
 const customer = require('../models/customer_model');
 
-//  Post a new Order
-router.post('/newOrder',
-  function(req, res) {
-    customer.postNewOrder(req.body, function(err, result) {
-      if(err) {
-        res.json(err)
-      } else {
-        //  Try to get newly created order id...
-        customer.getNewOrderId(req.body, function(err, result) {
-          if(err) {
-            res.json(err)
-          } else {
-            //  ...to post order data correctly...
-            customer.postNewOrderData(req.body, result.order_id[0], function(err, result) {
-              if(err) {
-                res.json(err)
-              } else {
-                res.json(result)
-              }
-            })
-          }
-        })
-      }
-    })
-  }
-);
-//  Get order by id or all orders...
-router.get('/getOrders/:orderId?',
-  function(req, res) {
-    if(req.params.orderId) {
-      customer.getOrderById(req.body, req.params.orderId, function(err, result) {
-        if(err) {
-          res.json(err)
-        } else {
-          res.json(result)
-        }
-      })
-    } else {
-      customer.getAllOrders(req.body, function(err, result) {
-        if(err) {
-          res.json(err)
-        } else {
-          res.json(result)
-        }
-      })
-    }
-  }
-);
-///////
-// get all orders by customer id (this will be used to present the orders on the frontpage
-//until a better request is made for it)
+
+// get all orders by customer id 
 router.get('/getOrders/customer/:customer_id?',
   function(req, res) {
     customer.getOrderByCustomerId(req.params.customer_id, function(err, result) {
@@ -64,23 +15,7 @@ router.get('/getOrders/customer/:customer_id?',
     })
   }
 );
-//get orders by customer id which have the orderstatus of receiving, delivering and all in between
 
-
-//get orders by customer id which have the orderstatus of delivered
-
-//  Get Order Data
-router.get('/getOrders/:orderId?/data',
-  function(req, res) {
-    customer.getOrderData(req.params.orderId, function(err, result) {
-      if(err) {
-        res.json(err)
-      } else {
-        res.json(result)
-      }
-    })
-  }
-);
 //  Update order status
 router.put('/confirmDelivery',
   function(req, res) {
@@ -93,7 +28,6 @@ router.put('/confirmDelivery',
     })
   }  
 );
-
 
 //get customer by customer id
 router.get('/:id?',
@@ -108,8 +42,8 @@ router.get('/:id?',
     });
   } 
   });
-  // simpliefied version of previous order post request
-  // this will be used to test the shopping cart create order implementation
+
+  // create a new order
   router.post('/createOrder', 
   function(req, res) {
     customer.addOrder(req.body, function(err, data) {
@@ -148,5 +82,71 @@ router.get('/getCC/:customerID?',
   }
 );
 
+// not in use currently
+
+//  Post a new Order
+router.post('/newOrder',
+  function(req, res) {
+    customer.postNewOrder(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        //  Try to get newly created order id...
+        customer.getNewOrderId(req.body, function(err, result) {
+          if(err) {
+            res.json(err)
+          } else {
+            console.log(result.order_id)
+            //  ...to post order data correctly...
+            customer.postNewOrderData(req.body, result.order_id, function(err, result) {
+              if(err) {
+                res.json(err)
+              } else {
+                res.json(result)
+              }
+            })
+          }
+        })
+      }
+    })
+  }
+);
+
+
+//  Get order by id or all orders...
+router.get('/getOrders/:orderId?',
+  function(req, res) {
+    if(req.params.orderId) {
+      customer.getOrderById(req.body, req.params.orderId, function(err, result) {
+        if(err) {
+          res.json(err)
+        } else {
+          res.json(result)
+        }
+      })
+    } else {
+      customer.getAllOrders(req.body, function(err, result) {
+        if(err) {
+          res.json(err)
+        } else {
+          res.json(result)
+        }
+      })
+    }
+  }
+);
+
+//  Get Order Data
+router.get('/getOrders/:orderId?/data',
+  function(req, res) {
+    customer.getOrderData(req.params.orderId, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
 
 module.exports = router;
