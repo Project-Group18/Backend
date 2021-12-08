@@ -170,6 +170,20 @@ router.put('/updatePicture/restaurant',
   }  
 );
 
+//  Update dish image with dish id
+router.put('/updatePicture/dish',
+  function(req, res) {  
+    manager.updateDishPic(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }  
+);
+
+
 //  TO BE SOLVED LATER!!!
 //update manager info
 /* router.put('/:id', 

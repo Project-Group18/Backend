@@ -93,7 +93,13 @@ const manager = {
       callback
     )
   },
-
+  updateDishPic: function(data, callback) {
+    return db.query(
+      'UPDATE dish SET dish_picture=? WHERE dish_id=?',
+      [data.dish_picture, data.dish_id],
+      callback
+    )
+  },
   /* //  TO BE SOLVED LATER...
   updateName: function(id, manager, callback) {
     return db.query(
