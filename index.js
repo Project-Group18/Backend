@@ -1,13 +1,11 @@
 const express = require('express')
-const connection = require('./database');
+//const connection = require('./database');
 var bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3001
 var cors = require('cors')
 
-
-const customer_passport = require('./passport_customer');
-const manager_passport = require('./passport_manager');
+const passport = require('./passport');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -27,8 +25,8 @@ var customerRouter = require('./routes/customer');
 app.use('/public', publicRouter);
 app.use('/new', newUserRouter);
 app.use('/login', loginRouter);
-app.use('/manager', manager_passport.authenticate('jwt', {session:false}), managerRouter);
-app.use('/customer', customer_passport.authenticate('jwt', {session:false}), customerRouter);
+app.use('/manager', passport.authenticate('jwt', {session:false}), managerRouter);
+app.use('/customer', passport.authenticate('jwt', {session:false}), customerRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

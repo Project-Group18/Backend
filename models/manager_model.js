@@ -45,7 +45,7 @@ const manager = {
 },
   getOrderData: function(orderId, callback) {
     return db.query(
-      'SELECT dish.dish_name AS Product, dish.price AS Price, dish_data.dish_amount AS Quantity FROM dish INNER JOIN dish_data ON dish.dish_id=dish_data.dish_id WHERE dish_data.order_id=? ',
+      'SELECT dish.dish_id, dish.dish_name AS Product, dish.price AS Price, dish_data.dish_amount AS Quantity FROM dish INNER JOIN dish_data ON dish.dish_id=dish_data.dish_id WHERE dish_data.order_id=? ',
       [orderId],
       callback
     )
