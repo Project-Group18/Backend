@@ -35,7 +35,7 @@ passport_manager.use(new ManagerBasicStrategy(
                         }
                     })
                 } else {
-                    console.log("User not found on DB.");
+                    console.log("Manager not found on DB.");
                     done(null, false);
                 }
             })

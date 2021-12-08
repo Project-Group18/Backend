@@ -34,7 +34,7 @@ passport_customer.use(new CustomerBasicStrategy(
                         }
                     })
                 } else {
-                    console.log("User not found on DB.");
+                    console.log("Customer not found on DB.");
                     done(null, false);
                 }
             })
