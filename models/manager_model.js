@@ -89,8 +89,10 @@ const manager = {
 
   getOrderById: function(data, orderId, callback) {
     return db.query(
+
       'SELECT * FROM dish_order WHERE restaurant_id=? AND order_id=?',
       [data.restaurant_id, orderId],
+
       callback
     )
   },
