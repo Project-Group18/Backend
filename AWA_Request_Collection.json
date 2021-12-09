@@ -230,26 +230,72 @@
 			"name": "Login",
 			"item": [
 				{
-					"name": "Test Login",
+					"name": "Customer Login",
 					"request": {
 						"auth": {
 							"type": "basic",
 							"basic": [
 								{
 									"key": "password",
-									"value": "testpassword",
+									"value": "catapult",
 									"type": "string"
 								},
 								{
 									"key": "username",
-									"value": "TestManager@test.test",
+									"value": "kata.pultti@email.end",
 									"type": "string"
 								}
 							]
 						},
 						"method": "POST",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "http://localhost:3001/login/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"login",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Manager Login",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password11",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "Mario@email.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/login/manager",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"login",
+								"manager"
+							]
+						}
 					},
 					"response": []
 				}
