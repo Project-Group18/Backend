@@ -24,7 +24,7 @@ var customerRouter = require('./routes/customer');
 
 app.use('/public', publicRouter);
 app.use('/new', newUserRouter);
-app.use('/login', loginRouter);
+app.use('/jwtLogin', loginRouter);
 app.use('/manager', passport.authenticate('jwt', {session:false}), managerRouter);
 app.use('/customer', passport.authenticate('jwt', {session:false}), customerRouter);
 
