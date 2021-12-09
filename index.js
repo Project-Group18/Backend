@@ -19,7 +19,6 @@ const login = require('./models/login_model');
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
 
-
 passport.use(new BasicStrategy(
   function(email, password, done) {
     console.log('username: '+email+" password "+password);
