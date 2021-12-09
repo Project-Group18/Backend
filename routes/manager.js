@@ -143,6 +143,18 @@ router.put('/updatePicture/dish',
   }  
 );
 
+  //get all orders which status is delivered by restaurant id
+  router.post('/orderHistory',
+  function(req, res) {
+    manager.getOrderHistory(req.body, function(err, result) {
+        if(err) {
+            res.json(err);
+        } else {
+            res.json(result);
+        }
+    });
+  }
+);
 
 // not in use currently
 

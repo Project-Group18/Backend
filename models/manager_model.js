@@ -78,6 +78,12 @@ const manager = {
       callback
     )
   },
+  getOrderHistory: function(data, callback) {
+    return db.query('SELECT * FROM dish_order where order_status=? AND restaurant_id=?',
+        [data.order_status, data.restaurant_id], 
+        callback
+    );
+},
 
   //currently not in use
 
