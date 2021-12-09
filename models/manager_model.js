@@ -23,30 +23,10 @@ const manager = {
       callback
     );
   },
-  getOrderById: function(data, orderId, callback) {
+  getOrderByRestid: function(restid, callback) {
     return db.query(
-      'SELECT * FROM dish_order WHERE restaurant_id=? AND order_id=?',
-      [data.restaurant_id, orderId],
-      callback
-    )
-  },
-  getAllOrders: function(data, callback) {
-    return db.query(
-      'SELECT * FROM dish_order WHERE restaurant_id=?',
-      [data.restaurant_id],
-      callback
-    )
-  },
-  getOrderHistory: function(data, callback) {
-    return db.query('SELECT * FROM dish_order where order_status=? AND restaurant_id=?',
-      [data.order_status, data.restaurant_id], 
-      callback
-    );
-},
-  getOrderData: function(orderId, callback) {
-    return db.query(
-      'SELECT dish.dish_id, dish.dish_name AS Product, dish.price AS Price, dish_data.dish_amount AS Quantity FROM dish INNER JOIN dish_data ON dish.dish_id=dish_data.dish_id WHERE dish_data.order_id=? ',
-      [orderId],
+      'SELECT * from dish_order WHERE restaurant_id=?',
+      [restid],
       callback
     )
   },
@@ -57,14 +37,80 @@ const manager = {
       callback
     )
   },
-  ////
-  getOrderByRestid: function(restid, callback) {
+  getOrderHistory: function(data, callback) {
+    return db.query('SELECT * FROM dish_order where order_status=? AND restaurant_id=?',
+      [data.order_status, data.restaurant_id], 
+      callback
+    );
+  },
+  getRestaurantWithID: function(managerid, callback) {
     return db.query(
-      'SELECT * from dish_order WHERE restaurant_id=?',
+      'SELECT * from restaurant WHERE manager_id=?',
+      [managerid],
+      callback
+  )
+  },
+  getCategoriesWithID: function(restid, callback) {
+    return db.query(
+      'SELECT * from category WHERE restaurant_id=?',
       [restid],
       callback
     )
-  }
+  },
+  getDishesWithID: function(restid, callback) {
+    return db.query(
+      'SELECT * from dish WHERE restaurant_id=?',
+      [restid],
+      callback
+    )
+  },
+  updateRestImage: function(data, callback) {
+    return db.query(
+      'UPDATE restaurant SET restaurant_picture=? WHERE restaurant_id=?',
+      [data.restaurant_picture, data.restaurant_id],
+      callback
+    )
+  },
+  updateDishPic: function(data, callback) {
+    return db.query(
+      'UPDATE dish SET dish_picture=? WHERE dish_id=?',
+      [data.dish_picture, data.dish_id],
+      callback
+    )
+  },
+  getOrderHistory: function(data, callback) {
+    return db.query('SELECT * FROM dish_order where order_status=? AND restaurant_id=?',
+        [data.order_status, data.restaurant_id], 
+        callback
+    );
+},
+
+  //currently not in use
+
+  getOrderById: function(data, orderId, callback) {
+    return db.query(
+
+      'SELECT * FROM dish_order WHERE restaurant_id=? AND order_id=?',
+      [data.restaurant_id, orderId],
+
+      callback
+    )
+  },
+  getAllOrders: function(data, callback) {
+    return db.query(
+      'SELECT * FROM dish_order WHERE restaurant_id=?',
+      [data.restaurant_id],
+      callback
+    )
+  },
+  getOrderData: function(orderId, callback) {
+    return db.query(
+      'SELECT dish.dish_name AS Product, dish.price AS Price, dish_data.dish_amount AS Quantity FROM dish INNER JOIN dish_data ON dish.dish_id=dish_data.dish_id WHERE dish_data.order_id=? ',
+      [orderId],
+      callback
+    )
+  },
+
   /* //  TO BE SOLVED LATER...
   updateName: function(id, manager, callback) {
     return db.query(
