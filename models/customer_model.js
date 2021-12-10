@@ -41,13 +41,7 @@ const db = require('../database');
                 callback
             )
         },
-        getCustomerWithEmail: function(data, callback) {
-            return db.query(
-                'SELECT * FROM customer WHERE customer_email=?',
-                [data.customer_email],
-                callback
-            )
-        },
+
 
 
               //not in use currently

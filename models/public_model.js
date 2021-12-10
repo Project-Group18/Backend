@@ -1,6 +1,14 @@
 const db = require('../database');
 
 const public = {
+    //get customer 
+    getCustomerWithEmail: function(data, callback) {
+        return db.query(
+            'SELECT customer_id, customer_name, customer_email, credit_card FROM customer WHERE customer_email=?',
+            [data.customer_email],
+            callback
+        )
+    },
     //get all restaurants
     getAllRestaurants: function(callback) {
         return db.query('SELECT * FROM restaurant',

@@ -120,6 +120,21 @@ router.post('/managerid/email',
     }
 );
 
+//get customer with customer email
+router.post('/getCustomer/email',
+  function(req, res) {
+    public.getCustomerWithEmail(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+
+
+
 //  VVV     TEMP TEST CODE!!!!     VVV
 
 //  Get all customers (temporary)
