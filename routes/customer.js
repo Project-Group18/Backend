@@ -82,6 +82,20 @@ router.get('/getCC/:customerID?',
   }
 );
 
+//get customer with customer email
+router.post('/getCustomer/email',
+  function(req, res) {
+    customer.getCustomerWithEmail(req.body, function(err, result) {
+      if(err) {
+        res.json(err)
+      } else {
+        res.json(result)
+      }
+    })
+  }
+);
+
+
 // not in use currently
 
 //  Post a new Order
