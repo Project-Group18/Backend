@@ -36,7 +36,10 @@ function(req, res) {
     if(!CCFormat) {
       respText += "CreditCardNumber Invalid"
     }
-    res.send(respText)
+    /* res.send(respText) */
+    return res.status(400).send({
+      message: respText
+   });
   }
   
 });
@@ -67,7 +70,10 @@ function(req, res) {
   if(!passwordLength) {
     respText += "Password Invalid "
   }
-  res.send(respText)
+ /*  res.send(respText) */
+  return res.status(400).send({
+    message: respText
+ });
 }
 });
 
