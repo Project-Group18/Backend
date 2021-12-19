@@ -4,5 +4,5 @@ const connection = mysql.createPool({
     user:'b002b54b181543',
     password:'3da37abf',
     database:'heroku_f525f990b893a93'
-});
+});//
 module.exports = connection;
